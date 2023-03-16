@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 
 
@@ -12,6 +13,8 @@ export const ImageContext = createContext();
 
 function App() {
 
+const [searchImage,setSearchImage] = useState("")
+
 
   const { response, isLoading, error, fetchData } = useAxios(`search/photos?page=1&query=developer&client_id=VOGHC84n13kR4u5a9iGRBIiDYIbB4Bd-iPrMPyQXvLk`);
 
@@ -20,7 +23,9 @@ function App() {
     response,
      isLoading,
       error,
-       fetchData
+       fetchData,
+       searchImage,
+       setSearchImage
   }
 
   console.log(response);

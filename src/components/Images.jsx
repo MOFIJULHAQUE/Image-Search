@@ -5,14 +5,14 @@ import Loader from "./Loader"
 
 const Images = () => {
     const { response,
-        isLoading, } = useContext(ImageContext)
+        isLoading,searchImage } = useContext(ImageContext)
 
 
 
     return (
         <>
             <div>
-                <h3 className='text-center mt-2'>Results for Cats</h3>
+                <h3 className='text-center mt-2'>Results for {searchImage || "developer"} </h3>
             </div>
 
             <div class="container">
