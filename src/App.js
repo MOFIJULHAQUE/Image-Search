@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+
+
+import SearchField from "./components/SearchField";
+import Images from "./components/Images";
+import useAxios from "./hooks/useAxios";
+import { createContext } from "react";
+
+
+// Create Context 
+export const ImageContext = createContext();
 
 function App() {
+
+
+  const { response, isLoading, error, fetchData } = useAxios(`search/photos?page=1&query=developer&client_id=VOGHC84n13kR4u5a9iGRBIiDYIbB4Bd-iPrMPyQXvLk`);
+
+
+  const value = {
+    response,
+     isLoading,
+      error,
+       fetchData
+  }
+
+  console.log(response);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ImageContext.Provider value={value}>
+      <Navbar>
+        <SearchField />
+      </Navbar>
+      <Images />
+    </ImageContext.Provider>
   );
 }
+
 
 export default App;
