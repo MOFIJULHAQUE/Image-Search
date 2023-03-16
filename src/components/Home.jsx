@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div >
+    <div style={{margin:"0rem 10rem 0rem 10rem "}} >
       <img src={imageUrl} alt="Random image" height="658vh" width="100%" />
       
     </div>
